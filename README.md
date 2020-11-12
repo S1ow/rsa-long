@@ -16,7 +16,7 @@ npm install rsa-long
 
 ### 引入
 ```bash
-let esaLong = require('rsa-long');
+let rsaLong = require('rsa-long');
 ```
 
 ### 分段加密
@@ -24,7 +24,7 @@ let esaLong = require('rsa-long');
 ```bash
 let pubK = "公钥"
 let str = "待加密字符串"
-let encryptData = esaLong.encryptLong(pubK, str)
+let encryptData = rsaLong.encryptLong(pubK, str)
 console.log(`加密后：${encryptData}`)
 ```
 
@@ -32,12 +32,12 @@ console.log(`加密后：${encryptData}`)
 ```bash
 let priK = "私钥"
 let str = "待解密的字符串"
-let decData = esaLong.decryptLong(priK, str)
+let decData = rsaLong.decryptLong(priK, str)
 console.log(`解密后：${decData}`)
 ```
 
 ## demo的使用
-```
+```bash
 git clone https://github.com/S1ow/rsa-long.git
 cd rsa-long/demo
 yarn install
