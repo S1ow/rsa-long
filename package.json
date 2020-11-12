@@ -1,0 +1,12 @@
+{
+  "name": "rsa-long",
+  "version": "1.0.0",
+  "description": "rsa分段加、解密",
+  "main": "index.js",
+  "author": "S1ow",
+  "license": "MIT",
+  "dependencies": {
+    "jsrsasign": "^10.0.5",
+    "jsrsasign-util": "^1.0.2"
+  }
+}
