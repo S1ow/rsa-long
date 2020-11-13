@@ -1,0 +1,39 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn install
+
+PATH: 
+  /Users/yufeng/.panda_api:/Library/Frameworks/Python.framework/Versions/3.8/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/yufeng/.panda_api:/Library/Frameworks/Python.framework/Versions/3.8/bin:/Users/yufeng/Downloads/android-sdk-macosx/tools:/Users/yufeng/Downloads/android-sdk-macosx/platform:/Applications/Android Studio.app/Contents/gradle/gradle-5.1.1:/Applications/IntelliJ/bin:/usr/local/bin/ChromeDriver:/Users/yufeng/Downloads/android-sdk-macosx/tools:/Users/yufeng/Downloads/android-sdk-macosx/platform:/Applications/Android Studio.app/Contents/gradle/gradle-5.1.1:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/yufeng/.panda_api:/Library/Frameworks/Python.framework/Versions/3.8/bin:/Users/yufeng/Downloads/android-sdk-macosx/tools:/Users/yufeng/Downloads/android-sdk-macosx/platform:/Applications/Android Studio.app/Contents/gradle/gradle-5.1.1:/Applications/IntelliJ/bin:/usr/local/bin/ChromeDriver:/Users/yufeng/Downloads/android-sdk-macosx/tools:/Users/yufeng/Downloads/android-sdk-macosx/platform:/Applications/IntelliJ/bin:/usr/local/bin/ChromeDriver
+
+Yarn version: 
+  1.16.0
+
+Node version: 
+  10.15.3
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/yufeng/workspace/rsa-long/example/package.json: Unexpected token / in JSON at position 108
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:304:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:315:13
+
+npm manifest: 
+  {
+    "name": "demo",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "dependencies": {
+      // "rsa-long": "^1.0.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

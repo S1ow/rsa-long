@@ -1,12 +1,49 @@
 {
   "name": "rsa-long",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "rsa分段加、解密",
-  "main": "index.js",
+  "main": "dist/index.js",
   "author": "S1ow",
   "license": "MIT",
+  "homepage": "https://github.com/S1ow",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/S1ow/rsa-long"
+  },
+  "keywords": [
+    "RSA",
+    "Long",
+    "分段加密",
+    "分段解密"
+  ],
+  "scripts": {
+    "clean": "rm -rf ./dist/ ./es/ ./lib/",
+    "easy": "npm run clean && NODE_ENV=development rollup -w -c ./build/easy.config.js",
+    "node:dev": "npm run clean && NODE_ENV=development node ./build/dev.js",
+    "node:build": "npm run clean && NODE_ENV=production node ./build/build.js",
+    "start": "npm run clean && NODE_ENV=development rollup -w -c ./build/rollup.config.js",
+    "build": "npm run clean && NODE_ENV=production rollup -c ./build/rollup.config.js"
+  },
   "dependencies": {
+    "@babel/runtime": "^7.12.5",
+    "@babel/runtime-corejs2": "^7.12.5",
     "jsrsasign": "^10.0.5",
     "jsrsasign-util": "^1.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.13.0",
+    "eslint-plugin-vue": "^7.1.0",
+    "rollup": "^2.33.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-uglify": "^6.0.4"
   }
 }

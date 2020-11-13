@@ -1,6 +1,8 @@
 # RSA-LONG 分段加解密
 
 ## 更新说明
+#### 2020-11-13
+- 更新打包方式
 
 #### 2020-11-12
 - 新增分段加密，按照最大支持字符117进行分段
@@ -16,13 +18,13 @@ npm install rsa-long
 
 ### 引入
 ```bash
-let rsaLong = require('rsa-long');
+const rsaLong = require('rsa-long');
 ```
 
 ### 分段加密
 
 ```bash
-let pubK = "公钥"
+const pubK = "公钥"
 let str = "待加密字符串"
 let encryptData = rsaLong.encryptLong(pubK, str)
 console.log(`加密后：${encryptData}`)
@@ -30,7 +32,7 @@ console.log(`加密后：${encryptData}`)
 
 ### 分段解密
 ```bash
-let priK = "私钥"
+const priK = "私钥"
 let str = "待解密的字符串"
 let decData = rsaLong.decryptLong(priK, str)
 console.log(`解密后：${decData}`)
@@ -39,7 +41,7 @@ console.log(`解密后：${decData}`)
 ## demo的使用
 ```bash
 git clone https://github.com/S1ow/rsa-long.git
-cd rsa-long/demo
+cd rsa-long/example
 yarn install
 node index.js
 ```

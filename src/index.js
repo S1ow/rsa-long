@@ -1,9 +1,5 @@
 let rs = require('jsrsasign');
 
-exports.printMsg = function () {
-    console.log("This is a message from the demo package");
-}
-
 /**
  * 分段加密
  * @param {j} pubK 密钥
