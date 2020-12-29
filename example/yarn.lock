@@ -2,3 +2,67 @@
 # yarn lockfile v1
 
 
+"@babel/runtime-corejs2@^7.12.5":
+  version "7.12.5"
+  resolved "https://registry.npm.taobao.org/@babel/runtime-corejs2/download/@babel/runtime-corejs2-7.12.5.tgz?cache=0&sync_timestamp=1604441085972&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fruntime-corejs2%2Fdownload%2F%40babel%2Fruntime-corejs2-7.12.5.tgz#382ec38f0826365e96118e28b81249c1c61bace3"
+  integrity sha1-OC7DjwgmNl6WEY4ouBJJwcYbrOM=
+  dependencies:
+    core-js "^2.6.5"
+    regenerator-runtime "^0.13.4"
+
+"@babel/runtime@^7.12.5":
+  version "7.12.5"
+  resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.12.5.tgz?cache=0&sync_timestamp=1604441085826&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fruntime%2Fdownload%2F%40babel%2Fruntime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
+  integrity sha1-QQ5+SHRB4bNgwpvnFdhw2bmFiC4=
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
+core-js@^2.6.5:
+  version "2.6.11"
+  resolved "https://registry.npm.taobao.org/core-js/download/core-js-2.6.11.tgz?cache=0&sync_timestamp=1604675508568&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcore-js%2Fdownload%2Fcore-js-2.6.11.tgz#38831469f9922bded8ee21c9dc46985e0399308c"
+  integrity sha1-OIMUafmSK97Y7iHJ3EaYXgOZMIw=
+
+jsonc-parser@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.npm.taobao.org/jsonc-parser/download/jsonc-parser-0.0.1.tgz#7eff45de8fa7215315903eb4b612fdc465259ca8"
+  integrity sha1-fv9F3o+nIVMVkD60thL9xGUlnKg=
+  dependencies:
+    vscode-nls "^1.0.4"
+
+jsrsasign-util@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npm.taobao.org/jsrsasign-util/download/jsrsasign-util-1.0.2.tgz#449ff96837ce41a228c8493eb2477784a7f7e771"
+  integrity sha1-RJ/5aDfOQaIoyEk+skd3hKf353E=
+  dependencies:
+    jsonc-parser "^0.0.1"
+    jsrsasign "^4.8.2"
+
+jsrsasign@^10.0.5:
+  version "10.0.5"
+  resolved "https://registry.npm.taobao.org/jsrsasign/download/jsrsasign-10.0.5.tgz?cache=0&sync_timestamp=1604492303326&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fjsrsasign%2Fdownload%2Fjsrsasign-10.0.5.tgz#295cc1fb22fd0e1a269f56b6ff537459505d2ba7"
+  integrity sha1-KVzB+yL9Dhomn1a2/1N0WVBdK6c=
+
+jsrsasign@^4.8.2:
+  version "4.9.2"
+  resolved "https://registry.npm.taobao.org/jsrsasign/download/jsrsasign-4.9.2.tgz?cache=0&sync_timestamp=1604492303326&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fjsrsasign%2Fdownload%2Fjsrsasign-4.9.2.tgz#eaaca954700981e856f8a27da2e6b0eab6df0134"
+  integrity sha1-6qypVHAJgehW+KJ9ouaw6rbfATQ=
+
+regenerator-runtime@^0.13.4:
+  version "0.13.7"
+  resolved "https://registry.npm.taobao.org/regenerator-runtime/download/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
+  integrity sha1-ysLazIoepnX+qrrriugziYrkb1U=
+
+rsa-long@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.npm.taobao.org/rsa-long/download/rsa-long-1.0.6.tgz?cache=0&sync_timestamp=1609227187903&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Frsa-long%2Fdownload%2Frsa-long-1.0.6.tgz#2eb89bc13031b2354f65849694de400af86f8336"
+  integrity sha1-LribwTAxsjVPZYSWlN5ACvhvgzY=
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@babel/runtime-corejs2" "^7.12.5"
+    jsrsasign "^10.0.5"
+    jsrsasign-util "^1.0.2"
+
+vscode-nls@^1.0.4:
+  version "1.0.7"
+  resolved "https://registry.npm.taobao.org/vscode-nls/download/vscode-nls-1.0.7.tgz#298c01fce87802c644c0a15ef526a33c62c0d58e"
+  integrity sha1-KYwB/Oh4AsZEwKFe9SajPGLA1Y4=

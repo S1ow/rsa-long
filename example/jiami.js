@@ -1,30 +1,5 @@
 const esaLong = require('rsa-long');
 
-// 验签使用
-let orgPubKey = "-----BEGIN PUBLIC KEY-----" +
-    "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCxHCeQlKdY7gKEQbKXr5adSesz" +
-    "qaVSmmWWne4sgttEU6AB+XndQfO1gLCliVJ/fIgJXxrNpc3pAEWUiEnZZJIuvarN" +
-    "vsdU9JENIu9tSqp6zeMS2mzA3NsGLuUB3SZxPA0Q9Zjd6WKeSjoikPfD1FfdC/52" +
-    "7aAWvZUCNHn2YMnSFQIDAQAB" +
-    "-----END PUBLIC KEY-----"
-
-// 签名使用
-let sipPrivateKey = "-----BEGIN RSA PRIVATE KEY-----" +
-    "MIICXQIBAAKBgQDHGwE5vy6iP+Ajbtj0jy8kCqCoo0s5nAv5WMZLl4WFREDV8mT6" + 
-    "RMJaNi2owqnJwRYHulUbDXMXEGKXnD11iIpSVZbKTGw8Maxg/SM5Kk4grk2Ta8m/" +
-    "bMFcQBocTpCAzGqePNso5YVhiz+ZVr05HEDin22sld0QL5Ko+w64zkq2cwIDAQAB" +
-    "AoGBAIkNlbJiX39f6LF7Q+xUA2cTybNLdCSbvcJN0XGHQ2mQqfCbgdakLgRa9uML" +
-    "3EP8nWWEZcDRaT+fD7681bFp44vCcWyjHLbbpkXvcgl6GhtFLchDHOrZ0FKUVlOE" +
-    "ChYdzupXGhVPy7smQkSenHlV/W+TM5gAv1K8ssOUBRvnlrrBAkEA5cNGCKGSdASp" +
-    "EgurmOt7Gcg4M0UA3R4QP8ZKpoJzYGYITq6nsp4i+9YNtvmJFLtS8jiGYCVFhbqv" +
-    "gIFfgu8NDQJBAN3XhFRx8aY++dluqrCk8WYp2SZrsjhRvKcpDgXFLRxFL7R+Pdze" +
-    "MYUH4LH2fQiHBx2My3rRVL3g3vkeQpGS8X8CQQCH6GBOzrQAqJkRsZGJXRFuCL8l" +
-    "pJWENjpKXxLdN6DjzrbvQ+SyhVQQP2fRaf2qI7xGxyTFToa3OdyCWQSUQK8pAkBL" +
-    "GWx40eIGb4dRbj9mcVAvT7dtZEP/ANymkiVnGqr8yQcvSRVUMfv9lv8f/9uwCVYF" +
-    "UOaJe1f+t6OEHhRXB7GtAkA/6zzFEgh/XMaFpdY02he8sMrB2jxbQlrfKWW4hYLK" +
-    "0iZk1CWIERIPvr+cO9vAVwRljuL5kRYaHiqXMFAPTk83" +
-    "-----END RSA PRIVATE KEY-----"
-
 // 加密使用
 let sipPubKey = "-----BEGIN PUBLIC KEY-----" +
     "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDHGwE5vy6iP+Ajbtj0jy8kCqCo" +
@@ -64,9 +39,3 @@ console.log(`加密后：${encryptData}`)
 
 let sign = esaLong.sign(orgPrivateKey, JSON.stringify(user))
 console.log(`签名为：${sign}`)
-
-let decData = esaLong.decryptLong(sipPrivateKey, encryptData)
-console.log(`解密后：${decData}`)
-
-let verify = esaLong.verify(orgPubKey, decData, sign)
-console.log(`验证签名：${verify}`)

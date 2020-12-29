@@ -464,14 +464,46 @@
       }
     };
 
+    var sign = function sign(priK, text) {
+      // 创建 Signature 对象
+      var signature = new jsrsasign.KJUR.crypto.Signature({
+        alg: "MD5withRSA",
+        prvkeypem: priK
+      }); //!这里指定 私钥 pem!
+
+      signature.updateString(text);
+      var a = signature.sign();
+      var sign = jsrsasign.hex2b64(a);
+      console.log("sign: ", sign);
+      return sign;
+    };
+
+    var verify = function verify(pk, text, sign) {
+      // 验签
+      // !要重新new 一个Signature, 否则, 取摘要和签名时取得摘要不一样, 导致验签误报失败(原因不明)!
+      var signatureVf = new jsrsasign.KJUR.crypto.Signature({
+        alg: "MD5withRSA",
+        prvkeypem: pk
+      });
+      signatureVf.updateString(text); // !接受的参数是16进制字符串!
+
+      var b = signatureVf.verify(jsrsasign.b64tohex(sign));
+      console.log("verify: " + b);
+      return b;
+    };
+
     var src = {
       encryptLong: encryptLong,
-      decryptLong: decryptLong
+      decryptLong: decryptLong,
+      sign: sign,
+      verify: verify
     };
 
     exports.decryptLong = decryptLong;
     exports.default = src;
     exports.encryptLong = encryptLong;
+    exports.sign = sign;
+    exports.verify = verify;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

@@ -55,3 +55,24 @@ exports.decryptLong = (priK, text) => {
         return false;
     }
 }
+
+exports.sign = (priK, text) => {
+    // 创建 Signature 对象
+    let signature = new rs.KJUR.crypto.Signature({ alg: "MD5withRSA", prvkeypem: priK });    //!这里指定 私钥 pem!
+    signature.updateString(text);
+    let a = signature.sign();
+    let sign = rs.hex2b64(a);
+    console.log("sign: ", sign);
+    return sign;
+}
+
+exports.verify = (priK, text, sign) => {
+    // 验签
+    // !要重新new 一个Signature, 否则, 取摘要和签名时取得摘要不一样, 导致验签误报失败(原因不明)!
+    let signatureVf = new rs.KJUR.crypto.Signature({ alg: "MD5withRSA", prvkeypem: priK });
+    signatureVf.updateString(text);
+    // !接受的参数是16进制字符串!
+    let b = signatureVf.verify(rs.b64tohex(sign));
+    console.log("verify: "+b);
+    return b;
+}
