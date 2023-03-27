@@ -2,53 +2,23 @@ const esaLong = require('rsa-long');
 
 // 验签使用
 let orgPubKey = "-----BEGIN PUBLIC KEY-----" +
-    "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCxHCeQlKdY7gKEQbKXr5adSesz" +
-    "qaVSmmWWne4sgttEU6AB+XndQfO1gLCliVJ/fIgJXxrNpc3pAEWUiEnZZJIuvarN" +
-    "vsdU9JENIu9tSqp6zeMS2mzA3NsGLuUB3SZxPA0Q9Zjd6WKeSjoikPfD1FfdC/52" +
-    "7aAWvZUCNHn2YMnSFQIDAQAB" +
-    "-----END PUBLIC KEY-----"
-
-// 签名使用
-let sipPrivateKey = "-----BEGIN RSA PRIVATE KEY-----" +
-    "MIICXQIBAAKBgQDHGwE5vy6iP+Ajbtj0jy8kCqCoo0s5nAv5WMZLl4WFREDV8mT6" + 
-    "RMJaNi2owqnJwRYHulUbDXMXEGKXnD11iIpSVZbKTGw8Maxg/SM5Kk4grk2Ta8m/" +
-    "bMFcQBocTpCAzGqePNso5YVhiz+ZVr05HEDin22sld0QL5Ko+w64zkq2cwIDAQAB" +
-    "AoGBAIkNlbJiX39f6LF7Q+xUA2cTybNLdCSbvcJN0XGHQ2mQqfCbgdakLgRa9uML" +
-    "3EP8nWWEZcDRaT+fD7681bFp44vCcWyjHLbbpkXvcgl6GhtFLchDHOrZ0FKUVlOE" +
-    "ChYdzupXGhVPy7smQkSenHlV/W+TM5gAv1K8ssOUBRvnlrrBAkEA5cNGCKGSdASp" +
-    "EgurmOt7Gcg4M0UA3R4QP8ZKpoJzYGYITq6nsp4i+9YNtvmJFLtS8jiGYCVFhbqv" +
-    "gIFfgu8NDQJBAN3XhFRx8aY++dluqrCk8WYp2SZrsjhRvKcpDgXFLRxFL7R+Pdze" +
-    "MYUH4LH2fQiHBx2My3rRVL3g3vkeQpGS8X8CQQCH6GBOzrQAqJkRsZGJXRFuCL8l" +
-    "pJWENjpKXxLdN6DjzrbvQ+SyhVQQP2fRaf2qI7xGxyTFToa3OdyCWQSUQK8pAkBL" +
-    "GWx40eIGb4dRbj9mcVAvT7dtZEP/ANymkiVnGqr8yQcvSRVUMfv9lv8f/9uwCVYF" +
-    "UOaJe1f+t6OEHhRXB7GtAkA/6zzFEgh/XMaFpdY02he8sMrB2jxbQlrfKWW4hYLK" +
-    "0iZk1CWIERIPvr+cO9vAVwRljuL5kRYaHiqXMFAPTk83" +
-    "-----END RSA PRIVATE KEY-----"
-
-// 加密使用
-let sipPubKey = "-----BEGIN PUBLIC KEY-----" +
-    "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDHGwE5vy6iP+Ajbtj0jy8kCqCo" +
-    "o0s5nAv5WMZLl4WFREDV8mT6RMJaNi2owqnJwRYHulUbDXMXEGKXnD11iIpSVZbK" +
-    "TGw8Maxg/SM5Kk4grk2Ta8m/bMFcQBocTpCAzGqePNso5YVhiz+ZVr05HEDin22s" +
-    "ld0QL5Ko+w64zkq2cwIDAQAB" +
+    "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDwT9obzkKrzNKC6p+zYdoQ85fXRn8dkNiOSwAq9LFASsPVZimFqKa650nT6FOHvXpqwcJuzQDTA/2B4FslKX68Vw5EY2ih/ZoTsbSKeCsEW9/M8gDGUtblpNSyuonFHdHQbHV2ko4O7foz5fHFSwBNCnKiMQGkKbYC+MWi35rwFQIDAQAB" +
     "-----END PUBLIC KEY-----"
 
 // 解密使用
-let orgPrivateKey = "-----BEGIN RSA PRIVATE KEY-----" +
-    "MIICXAIBAAKBgQCxHCeQlKdY7gKEQbKXr5adSeszqaVSmmWWne4sgttEU6AB+Xnd" +
-    "QfO1gLCliVJ/fIgJXxrNpc3pAEWUiEnZZJIuvarNvsdU9JENIu9tSqp6zeMS2mzA" +
-    "3NsGLuUB3SZxPA0Q9Zjd6WKeSjoikPfD1FfdC/527aAWvZUCNHn2YMnSFQIDAQAB" +
-    "AoGAEp38BrWpla6HMzHYvRsnAOepQqf9id5S+W8mfyVOOTN1KV/5EGoDXTvm1a/G" +
-    "rUIA5sNJhP5905VEuyVMZf6tYvGLHQMws3JYCx+gBotR99/iRkDTbbqXQGfhRFHM" +
-    "PXjhEuz9G+Pd4EDuw0BBvHGLT/bIEkhM/RiyF3+muQ1RH80CQQDkTKhS3wbv4CAz" +
-    "m14pj4k6M0X7JPf5mN6SDajVLXf90DWqEN8Ur9B7qk+baTtvwqIxSHn8w5ubWWLU" +
-    "9BAOQCJvAkEAxpl4nO7byOGgNdqTEvcTjBm0AgmYIdZ2kwF7B+Cfkec+4iRoxuIk" +
-    "Zf2zjsVRm417SZjaCHxB1/qViPx0DUOFuwJAE0KoXL12H1ygOtpbulPitudGeyam" +
-    "SQdtl5LRcJKycdZUALIFsAAZLaWzq5/YJNidyFyd9gYmpZeH8AFbLWiZvwJAM1x7" +
-    "gfKQKrqXSXY2tR/rET+Qezpp+s5RKiGm5NmlywEIFUofQtg3W50qM9E6EsWbTeRW" +
-    "9vzTtnya8auAg/GjgwJBAOMVHDtkT2gHUUwOySRf3I3zxM6qItie2l4K/MdCQD10" +
-    "O2kX4FBvea1WUyvGEXfZvUIDLrqjMf4MZ3gd51tF42g=" +
-    "-----END RSA PRIVATE KEY-----"
+let sipPrivateKey = "-----BEGIN PRIVATE KEY-----" +
+    "MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAIc9PErLzL0w4YjaHnYO5W+TRGU6/Y2MFNjzx+scuTepFhTbjKZ0ZXgf761rwNmIwk1rU4jWgDJgxWULw5loQ1ZOdQ8nYS3vqOdDXN22ebV+XvmXzredjInH6onCiEFOogca1CkunqlkctYtiDoHtRiSmdrtM5OMSkqZWinqo7ZxAgMBAAECgYAJS1QRb+AqQGm/lf3x7yQlfuF8c4lpaO8l2dsrdVXlVWGHHW+VIPq4PrmiGX2vdY6k83NSPCujSrNGNoDC0j+OXM6hCmE3FBzws7K0Bt7PnS3f/1l2Rsx8aGDq+XpJEhUICx/v5GfXeqmTgm/0HmgEcZO/QfRI3LpRkEsMkx8OgQJBAONjWcgvyP2uWLmvZlfawWgLbusG0buxXH+AOFHwDg3TtWPi7boRS6IRzOFO/iya6+UZc3UVQMkdzcC8SHjZRGUCQQCYQZM2JB/7TJXG3pccEokBGQuDxjbOJZEKuifs4qCW2nm4Trr7KRwjoFgwSiPZgMa7li7C8ZoYBe9IqspbwisdAkBG6XbYXT6bDkIRNkf+YfQq1FX06Z2CoR8ti/kEZI6ddUZ+LgjhG/+wPUjdgtr1YiLqwXMmMkiP78F4t78KIQeZAkEAjXvCNHl1TqxoMhj+CpQew+pmDNnQa9f05CcAmtwtpoD2wxJGJsaY43JJAPakQaWtBvwUEAs6ykAZj0lGKeZQ8QJABb7ocsVGdLlPCe/2oKdUuWCDS4U72DmLP1xz20nFzfYAuuch4WTz+8cYW8Gb0HvWLBkij8ov3aLiYXZnddBFPA==" +
+    "-----END PRIVATE KEY-----"
+
+// 加密使用
+let sipPubKey = "-----BEGIN PUBLIC KEY-----" +
+    "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCHPTxKy8y9MOGI2h52DuVvk0RlOv2NjBTY88frHLk3qRYU24ymdGV4H++ta8DZiMJNa1OI1oAyYMVlC8OZaENWTnUPJ2Et76jnQ1zdtnm1fl75l863nYyJx+qJwohBTqIHGtQpLp6pZHLWLYg6B7UYkpna7TOTjEpKmVop6qO2cQIDAQAB" +
+    "-----END PUBLIC KEY-----"
+
+// 签名使用
+let orgPrivateKey = "-----BEGIN PRIVATE KEY-----" +
+    "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAPBP2hvOQqvM0oLqn7Nh2hDzl9dGfx2Q2I5LACr0sUBKw9VmKYWoprrnSdPoU4e9emrBwm7NANMD/YHgWyUpfrxXDkRjaKH9mhOxtIp4KwRb38zyAMZS1uWk1LK6icUd0dBsdXaSjg7t+jPl8cVLAE0KcqIxAaQptgL4xaLfmvAVAgMBAAECgYAM0XmVG5yvTMrazFiN6TWIS3IJO9uqcFA40NPWtrwgrYxCHQOwezU/iXhE6yLPfgIiYSj1n45AczlJvPWnpw25NCZIKt1Z8QkeiIOGeinsfLsPIFCBkk1R7riFVRdQkNMJufZkcAlcV3cI7lZOGf7HZpLyA1WxniPRie8c8fn2KQJBAPq6TXXg5gst9+C/kU5ddttJa2agtBgSWgfxUZ/Bzi88ClTEqAgi5jXKuxCTH2MjNv/kiOMcaJk7YYd3O8yrYS0CQQD1XXrTa/T3V7oUJI5qBCLPgnRDsKJv3mW2YFO/+zJw4AbwcrH8SlwyJMmsJCie6kszMRHeefhLeyYCn6TR8wuJAkA+m7jt/4vSLNdh8tQo+mPMnEfKZ8Sw4hxDMXpNZ0rCNr7prfW7mmNb+VS+7c3/pnJ8cafQ9m4UHWTcO+Td1cm9AkEAtlBXS3ET/BU7NmxTRYL9OqL8MK+2gtkFSpYYpLXJrQVJIrCWf5fhGYEsOLRFWo9MgSUc2epXC/7dJ2Xn2fh1wQJBAOnhLopAiAN1HL7R7Axm67AFHorrSoLSwdkrIuA71vaVMVt9n2ZJCK7z19H/FY6QHnr2TGRAaGnJn5+/TBSu9og="+
+    "-----END PRIVATE KEY-----"
 
 
 let user = {
@@ -58,6 +28,7 @@ let user = {
     headImg: "https://upload.jianshu.io/users/upload_avatars/1728429/4121cab5-932c-4044-b71e-992acd405280.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp",
     address: "辽宁省大连市"
 }
+console.log("明文：" + JSON.stringify(user))
 
 let encryptData = esaLong.encryptLong(sipPubKey, JSON.stringify(user))
 console.log(`加密后：${encryptData}`)
